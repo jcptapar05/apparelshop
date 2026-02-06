@@ -194,9 +194,9 @@
             <div class="flex flex-col sm:flex-row justify-between items-center gap-6 mt-10 pt-8 border-t border-gray-200">
               <a
                 href="/collections/all"
-                class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:text-indigo-800 transition-colors duration-300"
+                class="inline-flex items-center gap-2 text-indigo-600 font-medium hover:text-indigo-800 transition-colors duration-300 text-sm"
               >
-                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-left text-xs"></i>
                 Continue Shopping
               </a>
 
@@ -204,18 +204,18 @@
                 <button
                   type="submit"
                   name="update"
-                  class="px-6 py-3 border-2 border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-300"
+                  class="px-4 py-2 border border-gray-300 text-gray-700 font-medium rounded hover:bg-gray-50 transition-colors duration-300 text-sm uppercase tracking-wide"
                 >
-                  <i class="fas fa-sync-alt mr-2"></i>
+                  <i class="fas fa-sync-alt mr-2 text-xs"></i>
                   Update Cart
                 </button>
 
                 <button
                   type="button"
                   onclick="clearCart()"
-                  class="px-6 py-3 border-2 border-red-200 text-red-600 font-medium rounded-lg hover:bg-red-50 transition-colors duration-300"
+                  class="px-4 py-2 border border-red-200 text-red-600 font-medium rounded hover:bg-red-50 transition-colors duration-300 text-sm uppercase tracking-wide"
                 >
-                  <i class="fas fa-trash mr-2"></i>
+                  <i class="fas fa-trash mr-2 text-xs"></i>
                   Clear Cart
                 </button>
               </div>
@@ -262,7 +262,7 @@
                     <button
                       type="button"
                       onclick="applyDiscount()"
-                      class="px-4 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors duration-300"
+                      class="px-4 py-2 bg-gray-900 text-white rounded font-medium hover:bg-gray-800 transition-colors duration-300 text-xs uppercase tracking-wide"
                     >
                       Apply
                     </button>
@@ -276,9 +276,9 @@
               <div class="flex justify-between items-center">
                 <div>
                   <span class="text-gray-700">Estimated Total</span>
-                  <p class="text-sm text-gray-600">Including shipping & taxes</p>
+                  <p class="text-xs text-gray-600">Including shipping & taxes</p>
                 </div>
-                <span class="text-3xl font-bold text-gray-900">{{ cart.total_price | money }}</span>
+                <span class="text-2xl font-bold text-gray-900">{{ cart.total_price | money }}</span>
               </div>
             </div>
 
@@ -287,9 +287,9 @@
               type="submit"
               name="checkout"
               form="cart-form"
-              class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-xl font-bold text-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-3 group shadow-lg hover:shadow-xl mb-6"
+              class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-lg font-bold text-sm hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg hover:shadow-xl mb-6 uppercase tracking-wide"
             >
-              <i class="fas fa-lock"></i>
+              <i class="fas fa-lock text-xs"></i>
               Proceed to Checkout
             </button>
 
@@ -397,48 +397,18 @@
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/collections/all"
-            class="inline-flex items-center justify-center gap-3 bg-gray-900 text-white px-6 py-3 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 group"
+            class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-gray-800 transition-all duration-300 group"
           >
             <i class="fas fa-store"></i>
             Continue Shopping
           </a>
           <a
             href="/collections/bestsellers"
-            class="inline-flex items-center justify-center gap-3 border-2 border-gray-900 text-gray-900 px-6 py-3 rounded-full font-semibold text-lg hover:bg-gray-50 transition-all duration-300 group"
+            class="inline-flex items-center justify-center gap-2 border border-gray-900 text-gray-900 px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-gray-50 transition-all duration-300 group"
           >
             <i class="fas fa-fire"></i>
             Shop Bestsellers
           </a>
-        </div>
-
-        <!-- Recently Viewed -->
-        <div class="mt-16 pt-12 border-t border-gray-200">
-          <h3 class="text-xl font-bold text-gray-900 mb-8">Recently Viewed Items</h3>
-          <div class="grid grid-cols-2 gap-6">
-            <!-- Sample recently viewed items -->
-            <div class="group">
-              <div class="aspect-square rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100 mb-3">
-                <div class="w-full h-full flex items-center justify-center text-gray-400">
-                  <i class="fas fa-tshirt text-4xl"></i>
-                </div>
-              </div>
-              <p class="font-medium text-gray-900 text-sm group-hover:text-indigo-600 transition-colors duration-300">
-                Premium T-Shirt
-              </p>
-              <p class="text-gray-600 text-sm">$39.99</p>
-            </div>
-            <div class="group">
-              <div class="aspect-square rounded-xl overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100 mb-3">
-                <div class="w-full h-full flex items-center justify-center text-gray-400">
-                  <i class="fas fa-shoe-prints text-4xl"></i>
-                </div>
-              </div>
-              <p class="font-medium text-gray-900 text-sm group-hover:text-indigo-600 transition-colors duration-300">
-                Casual Sneakers
-              </p>
-              <p class="text-gray-600 text-sm">$89.99</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
