@@ -1,0 +1,109 @@
+<footer class="bg-neutral-900 text-neutral-300 border-t border-neutral-800 font-sans">
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      <!-- Brand Column -->
+      <div class="space-y-6">
+        <a href="{{ routes.root_url }}" class="block">
+          <span class="text-2xl font-bold text-white tracking-tight">{{ shop.name }}</span>
+        </a>
+        <p class="text-neutral-400 text-sm leading-relaxed">
+          Elegance in every stitch. We craft premium apparel for the modern individual, focusing on quality,
+          sustainability, and timeless style.
+        </p>
+        <div class="flex items-center gap-4">
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a
+            href="#"
+            class="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300"
+          >
+            <i class="fa-brands fa-pinterest-p"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop Column -->
+      <div>
+        <h3 class="text-white font-bold text-lg mb-6">Shop</h3>
+        <ul class="space-y-4 text-sm">
+          <li><a href="/collections/all" class="hover:text-white transition-colors duration-200">All Products</a></li>
+          <li>
+            <a href="/collections/new-arrivals" class="hover:text-white transition-colors duration-200">New Arrivals</a>
+          </li>
+          <li>
+            <a href="/collections/bestsellers" class="hover:text-white transition-colors duration-200">Best Sellers</a>
+          </li>
+          <li>
+            <a href="/collections/accessories" class="hover:text-white transition-colors duration-200">Accessories</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div>
+        <h3 class="text-white font-bold text-lg mb-6">Support</h3>
+        <ul class="space-y-4 text-sm">
+          <li><a href="/pages/contact" class="hover:text-white transition-colors duration-200">Contact Us</a></li>
+          <li>
+            <a href="/pages/shipping" class="hover:text-white transition-colors duration-200">Shipping & Returns</a>
+          </li>
+          <li><a href="/pages/size-guide" class="hover:text-white transition-colors duration-200">Size Guide</a></li>
+          <li><a href="/pages/sub-faq" class="hover:text-white transition-colors duration-200">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Column -->
+      <div>
+        <h3 class="text-white font-bold text-lg mb-6">Stay in the Loop</h3>
+        <p class="text-neutral-400 text-sm mb-6">Subscribe to receive updates, access to exclusive deals, and more.</p>
+        <form action="/contact#footer-newsletter" method="post" class="space-y-3">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="relative">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="Enter your email"
+              class="w-full bg-neutral-800 border border-neutral-700 rounded-lg px-4 py-3 text-white placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+              required
+            >
+            <button
+              type="submit"
+              class="absolute right-2 top-2 p-1.5 bg-white text-black rounded-md hover:bg-gray-200 transition-colors"
+            >
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-neutral-500 text-sm">
+        &copy; {{ 'now' | date: '%Y' }}
+        {{ shop.name }}. All rights reserved.
+      </div>
+      <div class="flex items-center gap-6 text-sm text-neutral-500">
+        <a href="/pages/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/pages/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero"
+    },
+    "benefits": {
+      "type": "benefits"
+    },
+    "product-carousel": {
+      "type": "product-carousel"
+    }
+  },
+  "order": ["hero", "product-carousel", "benefits"]
+}
