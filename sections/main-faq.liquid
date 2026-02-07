@@ -1,0 +1,172 @@
+<div class="py-16 md:py-24 bg-neutral-50 min-h-screen">
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Header -->
+    <div class="text-center mb-16 animate-fade-in-up">
+      <span class="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-semibold tracking-wide mb-4">
+        Help Center
+      </span>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight font-heading">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Find answers to common questions about shipping, returns, product details, and more.
+      </p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-4 animate-fade-in-up delay-100">
+      {% for block in section.blocks %}
+        <div
+          class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-md"
+          {{ block.shopify_attributes }}
+        >
+          <button
+            class="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
+            onclick="toggleFaq(this)"
+            aria-expanded="false"
+          >
+            <span class="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">
+              {{ block.settings.question }}
+            </span>
+            <span class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-all duration-300 transform rotate-0 icon-plus">
+              <i class="fas fa-plus text-sm"></i>
+            </span>
+          </button>
+          <div class="px-6 max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50/50 content-area">
+            <div class="pb-6 text-gray-600 leading-relaxed">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <!-- Default Content if no blocks -->
+        <div class="text-center py-12 text-gray-500">
+          <p>No questions added yet. Add blocks in the theme editor.</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-20 text-center animate-fade-in-up delay-200">
+      <p class="text-gray-600 mb-6">Still have questions? We're here to help.</p>
+      <a
+        href="/pages/contact"
+        class="inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+      >
+        <i class="far fa-envelope"></i>
+        Contact Support
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleFaq(button) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('.icon-plus');
+    const iconInner = icon.querySelector('i');
+
+    // Close all other FAQs (optional, typically user friendly)
+    document.querySelectorAll('[aria-expanded="true"]').forEach((otherBtn) => {
+      if (otherBtn !== button) {
+        otherBtn.setAttribute('aria-expanded', 'false');
+        otherBtn.nextElementSibling.style.maxHeight = null;
+        const otherIcon = otherBtn.querySelector('.icon-plus');
+        otherIcon.classList.remove('bg-indigo-600', 'text-white', 'rotate-45');
+        otherIcon.classList.add('bg-gray-50', 'text-gray-400', 'rotate-0');
+        otherIcon.querySelector('i').classList.remove('fa-minus');
+        otherIcon.querySelector('i').classList.add('fa-plus');
+      }
+    });
+
+    // Toggle current
+    button.setAttribute('aria-expanded', !isExpanded);
+
+    if (!isExpanded) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+      // Active Icon Style
+      icon.classList.remove(
+        'bg-gray-50',
+        'text-gray-400',
+        'rotate-0',
+        'group-hover:bg-indigo-50',
+        'group-hover:text-indigo-600'
+      );
+      icon.classList.add('bg-indigo-600', 'text-white', 'rotate-45'); // Using rotate for X effect or we can swap icon
+      // Swap icon to minus for clarity or keep plus rotated
+      iconInner.classList.remove('fa-plus');
+      iconInner.classList.add('fa-minus');
+      icon.classList.remove('rotate-45'); // If using minus, don't need rotate usually, or rotate back
+    } else {
+      content.style.maxHeight = null;
+      // Inactive Icon Style
+      icon.classList.remove('bg-indigo-600', 'text-white');
+      icon.classList.add(
+        'bg-gray-50',
+        'text-gray-400',
+        'rotate-0',
+        'group-hover:bg-indigo-50',
+        'group-hover:text-indigo-600'
+      );
+      iconInner.classList.remove('fa-minus');
+      iconInner.classList.add('fa-plus');
+    }
+  }
+</script>
+
+<style>
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We offer a 30-day return policy for all unused items in their original packaging.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [{ "type": "question" }, { "type": "question" }, { "type": "question" }]
+    }
+  ]
+}
+{% endschema %}
